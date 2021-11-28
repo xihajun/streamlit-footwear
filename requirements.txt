@@ -1,9 +1,10 @@
-tensorflow==2.2.1
+tensorflow
+keras==2.3.1
+tensorflow-gpu
 streamlit
 tensorflow
 scikit-image==0.15.0
 scipy
 requests
-keras
 keract
 pathlib
