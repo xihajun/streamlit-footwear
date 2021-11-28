@@ -1,6 +1,6 @@
 tensorflow==2.2.0
 keras==2.4
-streamlit==0.64.0
+streamlit
 scikit-image==0.15.0
 scipy
 requests
