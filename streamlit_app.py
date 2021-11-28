@@ -138,8 +138,16 @@ DEFAULT_IMAGE_URL = 'https://user-images.githubusercontent.com/25631641/14376868
 
 file_obj = st.sidebar.file_uploader('Choose an image:', ('jpg', 'jpeg'))
 
+import uuid
+
+IMG1 = str(uuid.uuid4())+".png"
+IMG2 = str(uuid.uuid4())+".png"
+
 if not file_obj:
     file_obj = BytesIO(read_file_from_url(DEFAULT_IMAGE_URL))
+# else:
+#     IMG1 = "test1.png"
+#     IMG2 = "test2.png"
 
 img_in = np.asarray(PIL.Image.open(file_obj))
 
@@ -165,6 +173,8 @@ prediction = ruler_model.predict(np.array(image))
 #print(prediction.squeeze().shape)
 predictions_footwear_img = prediction.squeeze()[:,:,0].reshape(width,height)
 predictions_bw_img = prediction[0][:,:,1].reshape(width,height)
+
+st.image(predictions_bw_img)
 
 selected_areas = largeConnectComponent(np.rint(predictions_footwear_img))
 
@@ -293,18 +303,26 @@ STREAMLIT_STATIC_PATH = (
     pathlib.Path(st.__path__[0]) / "static"
 )  # at venv/lib/python3.9/site-packages/streamlit/static
 
-IMG1 = "img1.png"
-IMG2 = "img2.png"
 
-selectedfig = plt.figure(figsize = (3,3))
+try:
+    print("removing")
+    shutil.rmtree(STREAMLIT_STATIC_PATH / IMG1)
+    shutil.rmtree(STREAMLIT_STATIC_PATH / IMG2)
+except:
+    print("nothing")
+
+selectedfig = plt.figure()
 plt.imshow(selected_areas,interpolation="nearest")
 plt.axis('off')
-plt.savefig(STREAMLIT_STATIC_PATH/IMG1,bbox_inches='tight')
-st.pyplot(selectedfig)
+plt.imsave(STREAMLIT_STATIC_PATH / IMG1,selected_areas)
+plt.close()
 
-# plt.imsave(IMG1,selected_areas,cmap="Accent")
-plt.imsave(STREAMLIT_STATIC_PATH/IMG2,labeled_img,cmap='Accent')
-#print(output)
-#out = write_image(st,output)
+
+testfig = plt.figure()
+plt.imshow(selected_areas,interpolation="nearest")
+plt.axis('off')
+plt.imsave(STREAMLIT_STATIC_PATH / IMG2, selected_areas)
+plt.close()
+
 
 juxtapose(IMG1, IMG2)
