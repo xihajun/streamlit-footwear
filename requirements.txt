@@ -1,4 +1,4 @@
-tensorflow
+tensorflow==1.12.0
 streamlit
 tensorflow
 scikit-image==0.15.0
