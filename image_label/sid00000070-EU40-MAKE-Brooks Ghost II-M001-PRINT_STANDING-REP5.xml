@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Image_files</folder>
+	<filename>sid00000070-EU40-MAKE-Brooks Ghost II-M001-PRINT_STANDING-REP5.jpeg</filename>
+	<path>/Users/xihajun/Documents/job_hunting/Companies/Dundee/Image_files/sid00000070-EU40-MAKE-Brooks Ghost II-M001-PRINT_STANDING-REP5.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>4032</width>
+		<height>3024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>footwear</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>615</xmin>
+			<ymin>605</ymin>
+			<xmax>3422</xmax>
+			<ymax>2249</ymax>
+		</bndbox>
+	</object>
+</annotation>
