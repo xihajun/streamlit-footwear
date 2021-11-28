@@ -14,7 +14,7 @@ import numpy as np
 import pandas as pd
 from scipy.sparse import csr_matrix, hstack, vstack
 import tensorflow as tf
-from tensorflow.keras import Sequential
+from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Activation, UpSampling2D, Cropping2D, Flatten, Dense, Dropout, BatchNormalization
 from skimage import transform, data, io, filters, measure 
 import pickle
