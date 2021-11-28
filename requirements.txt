@@ -1,2 +1,9 @@
-tensorflow==2.2.1
-streamlit==0.64.0
+tensorflow
+streamlit
+tensorflow
+scikit-image==0.15.0
+scipy
+requests
+keras==2.3.1
+keract
+pathlib
