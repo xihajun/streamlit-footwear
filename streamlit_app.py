@@ -27,14 +27,13 @@ import pathlib
 
 '# Where the footwear mask is?'
 THIS_FILE_DIR = os.path.abspath(os.path.dirname(__file__))
-MODEL_DIR = os.path.join(THIS_FILE_DIR, 'models')
-MODEL_FILENAME = os.path.join(MODEL_DIR, 'ruler_model.pl')
+MODEL_DIR = os.path.join(THIS_FILE_DIR, 'model_2021')
+MODEL_FILENAME = os.path.join(MODEL_DIR, 'saved_model.pb')
 
 @st.cache
 def download_model_from_web():
     if os.path.isfile(MODEL_FILENAME):
         return
-
     try:
         os.mkdir(MODEL_DIR)
     except FileExistsError:
@@ -42,8 +41,8 @@ def download_model_from_web():
 
     MODEL_ZIP_URL = (
         'http://www.edu-ing.cn/sslab/'
-        'ruler_model.zip')
-    ZIP_FILE_NAME = 'ruler_model.zip'
+        'model.zip')
+    ZIP_FILE_NAME = 'model.zip'
     ZIP_FILE_PATH = os.path.join(MODEL_DIR, ZIP_FILE_NAME)
     resp = requests.get(MODEL_ZIP_URL, stream=True)
 
@@ -60,9 +59,12 @@ def download_model_from_web():
 download_model_from_web()
 
 # load model
-with open("models/ruler_model.pl", "rb") as f:
-    ruler_model = pickle.load(f)
+# with open("models/ruler_model.pl", "rb") as f:
+#     ruler_model = pickle.load(f)
 
+ruler_model = tf.keras.models.load_model(
+    "model_2021"
+)
 # define functions
 @st.cache()
 def read_file_from_url(url):
