@@ -144,6 +144,8 @@ import uuid
 
 IMG1 = str(uuid.uuid4())+".png"
 IMG2 = str(uuid.uuid4())+".png"
+IMG3 = str(uuid.uuid4())+".png"
+IMG4 = str(uuid.uuid4())+".png"
 
 if not file_obj:
     file_obj = BytesIO(read_file_from_url(DEFAULT_IMAGE_URL))
@@ -313,10 +315,11 @@ try:
 except:
     print("nothing")
 
+# from here
 selectedfig = plt.figure()
 plt.imshow(selected_areas,interpolation="nearest")
 plt.axis('off')
-plt.imsave(STREAMLIT_STATIC_PATH / IMG1,selected_areas)
+plt.imsave(STREAMLIT_STATIC_PATH / IMG1,labeled_img)
 plt.close()
 
 
@@ -326,5 +329,96 @@ plt.axis('off')
 plt.imsave(STREAMLIT_STATIC_PATH / IMG2, selected_areas)
 plt.close()
 
+'## Output'
 
+box = return_big_box(selected_areas)
+img = PIL.Image.fromarray(ori)
+cropped = np.array(img.crop(box))
+st.image(cropped)
+
+'## Largest Connected Component'
+'The model returns things with noise. Because shoes have two main parts, why not select largest components for the output? It works for most of our test sets. However, this one is not working, lets go down and see how did I fix that issue'
 juxtapose(IMG1, IMG2)
+
+
+
+# from here
+selectedfig = plt.figure()
+plt.imshow(selected_areas,interpolation="nearest")
+plt.axis('off')
+plt.imsave(STREAMLIT_STATIC_PATH / IMG3,predictions_footwear_img)
+plt.close()
+
+
+testfig = plt.figure()
+plt.imshow(selected_areas,interpolation="nearest")
+plt.axis('off')
+plt.imsave(STREAMLIT_STATIC_PATH / IMG4, predictions_bw_img)
+plt.close()
+
+
+'## Ruler Detector'
+'So by redesigning the model adding ruler label and footwear mask label, this model could detect footwear and even estimate the length of the shoe.'
+
+find_loc = sum(predictions_bw_img.T)
+locations = np.where(find_loc >= max(find_loc))
+# col_start to col_end should be the marker 
+col_start = min(locations[0]) - 5
+col_end = max(locations[0]) + 5
+
+selected_marker_row = sum(predictions_bw_img[col_start:col_end])
+mean = np.mean(selected_marker_row)
+two_marker_loc = np.where(selected_marker_row>=mean)[0]
+# 两个连续的数列
+marker = range(min(two_marker_loc),max(two_marker_loc)+1)
+med = list(set(marker)-set(two_marker_loc))
+if len(med) == len(list(range(min(med),max(med)+1))):
+    print("yes this should be the marker")
+    maker_center = np.median(med)
+    maker_length = max(two_marker_loc) - min(two_marker_loc)
+    maker_width = maker_length/14
+# plt.plot(sum(predictions_bw_img[col_start:col_end]))
+    print(np.median(locations),maker_center)
+    fig = plt.figure()
+    plt.imshow(predictions_bw_img)
+    plt.plot(maker_center,np.median(locations[0]),'bo')
+    plt.plot(maker_center,np.median(locations[0])+maker_width,'ro')
+    plt.plot(maker_center,np.median(locations[0])-maker_width,'go')
+else:
+    print("something wrong, trying to fix it")
+    selected_marker_row[selected_marker_row>np.mean(selected_marker_row)]=1
+    selected_marker_row[selected_marker_row!=1] = 0
+    sum_bag = test(list(selected_marker_row))
+    center_pixels = np.where(np.abs(sum_bag) == max(np.abs(sum_bag)))[0]
+    print(center_pixels)
+    maker_center = np.median(center_pixels)
+    maker_length = len(center_pixels)*4
+    maker_width = maker_length/14
+
+    print(np.median(locations),maker_center)
+    fig = plt.figure()
+    plt.imshow(predictions_bw_img)
+    plt.plot(maker_center,np.median(locations[0]),'bo')
+    plt.plot(maker_center,np.median(locations[0])+maker_width,'ro')
+    plt.plot(maker_center,np.median(locations[0])-maker_width,'go')
+if np.median(locations[0])>376/2:
+    # 在下就在左边
+    try:
+        plt.plot(maker_center-maker_length/140*150,np.median(locations[0])-maker_width-maker_length/140*85,'ro')
+        plt.plot(maker_center-maker_length/140*150+maker_width,np.median(locations[0])-maker_width-maker_length/140*85,'bo')
+    except:
+        print(maker_center-maker_length/140*150+maker_width,np.median(locations[0])-maker_width-maker_length/140*85)
+else:
+    # 在上就在右边
+    try:
+        plt.plot(maker_center+maker_length/140*150,np.median(locations[0])+maker_width+maker_length/140*85,'ro')
+        plt.plot(maker_center+maker_length/140*150-maker_width,np.median(locations[0])+maker_width+maker_length/140*85,'bo')
+    except:
+        print(maker_center+maker_length/140*150-maker_width,np.median(locations[0])+maker_width+maker_length/140*85)
+
+st.pyplot(fig)
+
+juxtapose(IMG3, IMG4)
+
+
+
