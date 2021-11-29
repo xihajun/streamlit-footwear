@@ -332,8 +332,7 @@ plt.axis('off')
 plt.imsave(STREAMLIT_STATIC_PATH / IMG2, selected_areas)
 plt.close()
 
-'## Output'
-
+# output
 box = return_big_box(selected_areas)
 img = PIL.Image.fromarray(ori)
 cropped = np.array(img.crop(box))
