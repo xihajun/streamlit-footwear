@@ -1,6 +1,6 @@
 import streamlit.components.v1 as components
 
-def juxtapose(img1: str, img2: str, height: int = 1000):  # data
+def juxtapose(img1: str, img2: str, height: int = 500):  # data
 
     """Create a new timeline component.
     Parameters
