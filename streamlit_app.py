@@ -80,6 +80,30 @@ def fetch_img_from_url(url: str) -> PIL.Image:
     img = PIL.Image.open(requests.get(url, stream=True).raw)
     return img
 
+def test(a):
+  sum_bag = [a[0]]
+  k = 1
+  for i in range(len(a)-1):
+    # import pdb; pdb.set_trace()
+    if a[i+1] != a[i] and a[i+1] == 1:
+      k=-1*k
+      sum_bag.append(sum_bag[i]+k*a[i])
+    else:
+      sum_bag.append(sum_bag[i]+k*a[i])
+  return sum_bag
+
+def test_m(a):
+  sum_bag = [a[0]]
+  k = 1
+  for i in reversed(range(len(a)-1)):
+    # import pdb; pdb.set_trace()
+    if a[i+1] != a[i] and a[i+1] == 1:
+      k=-1*k
+      sum_bag.append(sum_bag[i]+k*a[i])
+    else:
+      sum_bag.append(sum_bag[i]+k*a[i])
+  return sum_bag
+
 def largeConnectComponent(bw_img):
     labeled_img, num = measure.label(bw_img, neighbors=8, background=0, return_num=True)
     max_label = []
@@ -181,7 +205,6 @@ prediction = ruler_model.predict(np.array(image))
 #print(prediction.squeeze().shape)
 predictions_footwear_img = prediction.squeeze()[:,:,0].reshape(width,height)
 predictions_bw_img = prediction[0][:,:,1].reshape(width,height)
-
 
 selected_areas = largeConnectComponent(np.rint(predictions_footwear_img))
 
