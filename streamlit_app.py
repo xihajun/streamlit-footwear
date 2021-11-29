@@ -356,8 +356,14 @@ plt.imsave(STREAMLIT_STATIC_PATH / IMG2, selected_areas)
 plt.close()
 
 # output
+from PIL import ImageEnhance
+enhance = st.sidebar.checkbox('enhance') 
 box = return_big_box(selected_areas)
 img = PIL.Image.fromarray(ori)
+if enhance:
+    img = ImageEnhance.Contrast(img)  
+    contrast = 3
+    img = img.enhance(contrast)  
 cropped = np.array(img.crop(box))
 st.image(cropped)
 
