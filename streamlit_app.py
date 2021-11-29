@@ -137,25 +137,30 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 
 MAX_IMG_WIDTH = 504
 MAX_IMG_HEIGHT = 376
-DEFAULT_IMAGE_URL = 'https://user-images.githubusercontent.com/25631641/143791911-3ce32cb6-66f0-493f-910e-ea9bea555a7c.jpeg'
+# DEFAULT_IMAGE_URL = 'https://user-images.githubusercontent.com/25631641/143791911-3ce32cb6-66f0-493f-910e-ea9bea555a7c.jpeg'
+url_list = ['https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000069-EU35.5-MAKE-Primark-M012-PRINT_STANDING-REP1.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000071-EU43-MAKE-Yours clothing -M002-PRINT_STANDING-REP4.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000070-EU40-MAKE-Brooks Ghost II-M001-PRINT_STANDING-REP5.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000072-EU37-MAKE-Converse-M007-PRINT_STANDING-REP2.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000072-EU37-MAKE-Converse-M007-PRINT_STANDING-REP3.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000139-EU44-MAKE-ASDA-M006-PRINT_STANDING-REP1.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000070-EU40-MAKE-Brooks Ghost II-M001-PRINT_STANDING-REP4.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000071-EU43-MAKE-Yours clothing -M002-PRINT_STANDING-REP5.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000077-EU38-MAKE-Converse-M019-PRINT_STANDING-REP6.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000071-EU43-MAKE-Yours clothing -M002-PRINT_STANDING-REP2.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000070-EU40-MAKE-Brooks Ghost II-M001-PRINT_STANDING-REP3.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000139-EU44-MAKE-ASDA-M006-PRINT_STANDING-REP6.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000072-EU37-MAKE-Converse-M007-PRINT_STANDING-REP4.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000077-EU38-MAKE-Converse-M019-PRINT_STANDING-REP1.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000069-EU35.5-MAKE-Primark-M012-PRINT_STANDING-REP6.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000072-EU37-MAKE-Converse-M007-PRINT_STANDING-REP5.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000070-EU40-MAKE-Brooks Ghost II-M001-PRINT_STANDING-REP2.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000071-EU43-MAKE-Yours clothing -M002-PRINT_STANDING-REP3.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000072-EU37-MAKE-Converse-M007-PRINT_STANDING-REP6.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000139-EU44-MAKE-ASDA-M006-PRINT_STANDING-REP4.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000070-EU40-MAKE-Brooks Ghost II-M001-PRINT_STANDING-REP1.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000069-EU35.5-MAKE-Primark-M012-PRINT_STANDING-REP5.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000077-EU38-MAKE-Converse-M019-PRINT_STANDING-REP3.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000077-EU38-MAKE-Converse-M019-PRINT_STANDING-REP2.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000069-EU35.5-MAKE-Primark-M012-PRINT_STANDING-REP4.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000071-EU43-MAKE-Yours clothing -M002-PRINT_STANDING-REP1.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000139-EU44-MAKE-ASDA-M006-PRINT_STANDING-REP5.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000069-EU35.5-MAKE-Primark-M012-PRINT_STANDING-REP3.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000077-EU38-MAKE-Converse-M019-PRINT_STANDING-REP5.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000139-EU44-MAKE-ASDA-M006-PRINT_STANDING-REP2.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000071-EU43-MAKE-Yours clothing -M002-PRINT_STANDING-REP6.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000070-EU40-MAKE-Brooks Ghost II-M001-PRINT_STANDING-REP6.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000139-EU44-MAKE-ASDA-M006-PRINT_STANDING-REP3.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000072-EU37-MAKE-Converse-M007-PRINT_STANDING-REP1.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000077-EU38-MAKE-Converse-M019-PRINT_STANDING-REP4.jpeg', 'https://raw.githubusercontent.com/xihajun/streamlit-footwear/main/images/sid00000069-EU35.5-MAKE-Primark-M012-PRINT_STANDING-REP2.jpeg']
 
-file_obj = st.sidebar.file_uploader('Choose an image:', ('jpg', 'jpeg'))
+form = st.sidebar.form(key="Button")
+submit = form.form_submit_button("Reload a new sample")
 
-import uuid
+if submit:
+    import random
+    DEFAULT_IMAGE_URL = random.choice(url_list)
+else:
+    DEFAULT_IMAGE_URL = 'https://user-images.githubusercontent.com/25631641/143791911-3ce32cb6-66f0-493f-910e-ea9bea555a7c.jpeg'
+
+file_obj = st.sidebar.file_uploader('Or upload an image:', ('jpg', 'jpeg'))
 
 IMG1 = str(uuid.uuid4())+".png"
 IMG2 = str(uuid.uuid4())+".png"
 IMG3 = str(uuid.uuid4())+".png"
 IMG4 = str(uuid.uuid4())+".png"
-
 if not file_obj:
     file_obj = BytesIO(read_file_from_url(DEFAULT_IMAGE_URL))
-# else:
-#     IMG1 = "test1.png"
-#     IMG2 = "test2.png"
 
 img_in = np.asarray(PIL.Image.open(file_obj))
 
+st.sidebar.write('Original input')
 write_image(st.sidebar, img_in)
 
 # input ori to small size
