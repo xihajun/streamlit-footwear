@@ -136,7 +136,7 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 
 MAX_IMG_WIDTH = 504
 MAX_IMG_HEIGHT = 376
-DEFAULT_IMAGE_URL = 'https://user-images.githubusercontent.com/25631641/143768680-7b27fbc7-bf20-4f49-8284-437cc850b76a.jpeg'
+DEFAULT_IMAGE_URL = 'https://user-images.githubusercontent.com/25631641/143791911-3ce32cb6-66f0-493f-910e-ea9bea555a7c.jpeg'
 
 file_obj = st.sidebar.file_uploader('Choose an image:', ('jpg', 'jpeg'))
 
