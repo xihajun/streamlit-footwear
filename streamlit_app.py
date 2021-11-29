@@ -20,7 +20,7 @@ from skimage import transform, data, io, filters, measure
 import pickle
 import matplotlib.pyplot as plt
 import keract
-
+import uuid
 from streamlit_juxtapose import juxtapose
 import pathlib
 
