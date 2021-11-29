@@ -157,8 +157,6 @@ img_in = np.asarray(PIL.Image.open(file_obj))
 
 write_image(st.sidebar, img_in)
 
-'## Output'
-
 # input ori to small size
 def ori_small_img(img):
   # load the training img
@@ -178,7 +176,6 @@ prediction = ruler_model.predict(np.array(image))
 predictions_footwear_img = prediction.squeeze()[:,:,0].reshape(width,height)
 predictions_bw_img = prediction[0][:,:,1].reshape(width,height)
 
-st.image(predictions_bw_img)
 
 selected_areas = largeConnectComponent(np.rint(predictions_footwear_img))
 
