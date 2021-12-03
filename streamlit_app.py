@@ -387,9 +387,11 @@ plt.axis('off')
 plt.imsave(STREAMLIT_STATIC_PATH / IMG4, predictions_bw_img)
 plt.close()
 
+'Img1 is the result from the naive autoencoder. As we can see that, the rule is totally confusing our model. In order to solve that, I designed a ruler detector'
+
 
 '## Ruler Detector'
-'So by redesigning the model adding ruler label and footwear mask label, this model could detect footwear and even estimate the length of the shoe.'
+'So by redesigning the model training on ruler label and footwear mask label, this model could detect footwear + rule. With the rule detector, this model could even estimate the length of the shoes (age, height prediction could be done based on that). '
 
 find_loc = sum(predictions_bw_img.T)
 locations = np.where(find_loc >= max(find_loc))
