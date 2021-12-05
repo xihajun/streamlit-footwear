@@ -431,6 +431,7 @@ else:
     print(np.median(locations),maker_center)
     fig = plt.figure()
     plt.imshow(predictions_bw_img)
+   
     plt.plot(maker_center,np.median(locations[0]),'bo')
     plt.plot(maker_center,np.median(locations[0])+maker_width,'ro')
     plt.plot(maker_center,np.median(locations[0])-maker_width,'go')
@@ -448,7 +449,7 @@ else:
         plt.plot(maker_center+maker_length/140*150-maker_width,np.median(locations[0])+maker_width+maker_length/140*85,'bo')
     except:
         print(maker_center+maker_length/140*150-maker_width,np.median(locations[0])+maker_width+maker_length/140*85)
-
+plt.axis('off')
 st.pyplot(fig)
 
 juxtapose(IMG3, IMG4)
