@@ -368,7 +368,7 @@ cropped = np.array(img.crop(box))
 st.image(cropped)
 
 '## Largest Connected Component'
-'The model returns things with noise. Because shoes have two main parts, why not select largest components for the output? It works for most of our test sets. However, this one is not working, lets go down and see how did I fix that issue'
+'In order to do image segementation for footwear mask. I maunally marked 6 images footwear masks and train it via an autoencoder. Img1 is an example output. As you can see that this model returns a lot of noise (ruler and other dots). Because shoes usually have two main parts (front heel & back heal), for those noise dots, they could be removed by selecting largest components for the output. It works for most of our test sets. However, this selected one is not working because of the ruler. In order to remove this "evil" ruler, I redesigned the model, lets go down and see how did I fix the issue'
 juxtapose(IMG1, IMG2)
 
 
@@ -387,11 +387,11 @@ plt.axis('off')
 plt.imsave(STREAMLIT_STATIC_PATH / IMG4, predictions_bw_img)
 plt.close()
 
-'Img1 is the result from the naive autoencoder. As we can see that, the rule is totally confusing our model. In order to solve that, I designed a ruler detector'
+'Img1 is the result from the naive autoencoder. As we can see that, the ruler here is confusing our model. A ruler detector helped to fix this issue'
 
 
 '## Ruler Detector'
-'So by redesigning the model training on ruler label and footwear mask label, this model could detect footwear + rule. With the rule detector, this model could even estimate the length of the shoes (age, height prediction could be done based on that). '
+'I found that two black components on the ruler would be easily found using autoencoder, by adding a ruler label (on black components), this model could detect footwear + ruler. As we can see Img2 shows this ruler marks. With the ruler marks, we will be able to estimate where the ruler is. And the footwear mask will always be one side of this ruler, so the problem would be solved magically!! In addtion to that, with the ruler marks, this model could even estimate the length of the shoes (to predict age, height of the criminal). '
 
 find_loc = sum(predictions_bw_img.T)
 locations = np.where(find_loc >= max(find_loc))
