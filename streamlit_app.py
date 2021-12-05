@@ -26,7 +26,7 @@ import pathlib
 
 
 '# Where the footwear mask is?'
-'A footwear mark hunter - footwear mark segementation'
+'A footwear mark hunter - footwear mark segmentation'
 THIS_FILE_DIR = os.path.abspath(os.path.dirname(__file__))
 MODEL_DIR = os.path.join(THIS_FILE_DIR, 'model_2021')
 MODEL_FILENAME = os.path.join(MODEL_DIR, 'saved_model.pb')
