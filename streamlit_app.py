@@ -368,7 +368,7 @@ cropped = np.array(img.crop(box))
 st.image(cropped)
 
 '## Largest Connected Component'
-'In order to do image segementation for footwear mask. I maunally marked 6 images footwear masks and train it via an autoencoder. Img1 is an example output. As you can see that this model returns a lot of noise (ruler and other dots). Because shoes usually have two main parts (front heel & back heal), for those noise dots, they could be removed by selecting largest components for the output. It works for most of our test sets. However, this selected one is not working because of the ruler. In order to remove this "evil" ruler, I redesigned the model, lets go down and see how did I fix the issue.'
+'In order to do image segmentation for footwear mask. I maunally marked 6 images footwear masks and train it via an autoencoder. Img1 is an example output. As you can see that this model returns a lot of noise (ruler and other dots). Because shoes usually have two main parts (front heel & back heal), for those noise dots, they could be removed by selecting largest components for the output. It works for most of our test sets. However, this selected one is not working because of the ruler. In order to remove this "evil" ruler, I redesigned the model, lets go down and see how did I fix the issue.'
 juxtapose(IMG1, IMG2)
 
 
