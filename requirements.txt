@@ -4,4 +4,3 @@ scikit-image==0.15.0
 scipy
 requests
 keract
-pathlib==1.0.1
