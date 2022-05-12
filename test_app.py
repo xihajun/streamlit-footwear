@@ -24,8 +24,7 @@ if file_pre and file_post:
     post_data = StringIO(file_post.getvalue().decode("utf-8"))
     pre_txt, post_txt = pre_data.read(), post_data.read()
     pre_list, post_list = read_string(pre_txt), read_string(post_txt)
-    
-
+    presentence, postsentence = [], []
     score = []
     dic = {}
     for i in pre_list:
@@ -34,8 +33,11 @@ if file_pre and file_post:
             dic[(i,j)] = similar(i,j)
             dic[(j,i)] = dic[(i,j)]
             rowscore.append(dic[(i,j)])
+            if dic[(i,j)]>=0.9:
+                pre, post = j, i
+                presentence.append(pre)
+                postsentence.append(post)
         score.append(rowscore)
         
-    import matplotlib.pyplot as plt
     fig = plt.imshow(score)
     st.pyplot(fig)
