@@ -9,6 +9,8 @@ import pickle
 import matplotlib.pyplot as plt
 import pathlib
 import re
+from io import StringIO
+
 
 file_pre = st.sidebar.file_uploader('Upload pre-GOC file:', ('txt'))
 file_post = st.sidebar.file_uploader('Upload post-GOC file:', ('txt'))
