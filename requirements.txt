@@ -1,5 +1,5 @@
 tensorflow
-streamlit
+streamlit==1.9.2
 scikit-image==0.15.0
 scipy
 requests
