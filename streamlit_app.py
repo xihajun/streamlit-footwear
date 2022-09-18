@@ -41,7 +41,7 @@ def download_model_from_web():
         pass
 
     MODEL_ZIP_URL = (
-        'http://www.edu-ing.cn/sslab/'
+        'http://xiha.hate.codes/sslab/'
         'model.zip')
     ZIP_FILE_NAME = 'model.zip'
     ZIP_FILE_PATH = os.path.join(MODEL_DIR, ZIP_FILE_NAME)
