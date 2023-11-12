@@ -1,7 +1,7 @@
 tensorflow
 streamlit==1.9.2
+numpy
 scikit-image==0.15.0
 scipy
 requests
 keract
-numpy
